@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integral</title>
+</head>
+<body>
+    <canvas id="canvas" width="50" height="600"></canvas>
+    <div class="limits">
+        <div>
+            <label for="">Simulaciones</label>
+            <input type="number" placeholder="" id="simulations" value="1000">
+        </div>
+        <br /><br />
+        <div>
+            <label for="">Limites para X</label>
+            <input type="number" placeholder="" id="limiteXMin" value="2">
+        </div>
+        <br />
+        <div>
+            <label for="">Limites para X</label>
+            <input type="number" placeholder="" id="limiteXMax" value="3">
+        </div>
+        <br />
+        <br />
+        <div>
+            <label for="">Limites para Y</label>
+            <input type="number" placeholder="" id="limiteYMin" value="0">
+        </div>
+        <br />
+        <div>
+            <label for="">Limites para Y</label>
+            <input type="number" placeholder="" id="limiteYMax" value="50">
+        </div>
+        <br />
+        <br />
+        <div>
+            <button onclick="calcular()">Calcular</button>
+        <div>
+    </div>
+    <style>
+        * {
+            margin: 0px
+        }
+        body {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            box-sizing: border-box !important;
+        }
+        canvas {
+            margin: 20px;
+            background-color: #d9d9d9;
+            transform: scale(1, -1);
+        }
+        .limits {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</body>
+<script src="./js/index.js"></script>
+</html>
