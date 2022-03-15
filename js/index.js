@@ -50,25 +50,15 @@ function calcular(){
             }
         }
     }
-
+    
     const areaRect =  (yMax - yMin) * (xMax - xMin);
-    const prom = (favor*100)/tries;
+    const monteCarlo = areaRect * (((favor*100)/tries) / 100);
+    const error = ((tries-favor) * 100)/tries;
 
-    const monteCarlo = areaRect * (prom / 100);
-
-    console.log('______________')
-    console.log('area: ', areaRect)
-    console.log('Montecarlo: ', monteCarlo)
-    console.log('Integral: ', integral)
-
-    let sim = areaRect * (prom / 100);
-    const error = Math.abs(((integral - sim) / integral) * 100)
-    console.log('Error %', error);
-
-    showResults({area: areaRect, monteCarlo, integral, error});
+    showResults({area: areaRect, monteCarlo, error});
 }
 
-const showResults = ({area, monteCarlo, integral, error}) => {
+const showResults = ({area, monteCarlo, error}) => {
     const $results = document.getElementById('results');
     let str =`
         <h2>Resultados</h2>
