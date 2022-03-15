@@ -20,10 +20,12 @@ do {
 const cvs = document.getElementById("canvas");
 const ctx = cvs.getContext("2d");
 
+document.getElementById('form').onsubmit = calcular;
+
 function calcular(){
     let points = [];
     let favor = 0;
-    let fallos = 0;
+    
     let [ xMin, xMax, yMin, yMax, tries ] = [
         document.querySelector('#limiteXMin').value,
         document.querySelector('#limiteXMax').value,
@@ -41,20 +43,23 @@ function calcular(){
         const [ x,  y ] = punto;
         if(area[x]){
             const size = 15;
-            if(y <= area[x]){
+            if(y < area[x]){
                 favor++;
                 ctx.fillStyle = "blue";
                 ctx.fillRect(x*size, y*size, size, size)
-            } else {
-                fallos++;
             }
-        } else {
-            console.log(x)
         }
     }
 
-    console.log('Intentos: ', tries);
-    console.log('Fallos: ', fallos);
-    console.log('Cumplen: ', favor);
-    console.log('%', (favor*100)/tries);
+    let areaRect =  (yMax - yMin) * (xMax - xMin);
+    let prom = (favor*100)/tries;
+
+    console.log('______________')
+    console.log('area: ', areaRect)
+    console.log('Montecarlo: ', areaRect * (prom / 100))
+    console.log('Integral: ', integral)
+
+
+    let sim = areaRect * (prom / 100);
+    console.log('Error %', Math.abs(((integral - sim) / integral) * 100));
 }

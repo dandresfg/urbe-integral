@@ -8,7 +8,7 @@
 </head>
 <body>
     <canvas id="canvas" width="50" height="600"></canvas>
-    <div class="limits">
+    <form class="limits" action="#" id="form">
         <div>
             <label for="">Simulaciones</label>
             <input type="number" placeholder="" id="simulations" value="1000">
@@ -16,12 +16,12 @@
         <br /><br />
         <div>
             <label for="">Limites para X</label>
-            <input type="number" placeholder="" id="limiteXMin" value="2">
+            <input type="number" placeholder="" id="limiteXMin" max="2" value="2">
         </div>
         <br />
         <div>
             <label for="">Limites para X</label>
-            <input type="number" placeholder="" id="limiteXMax" value="3">
+            <input type="number" placeholder="" id="limiteXMax" min="3" value="3">
         </div>
         <br />
         <br />
@@ -32,14 +32,14 @@
         <br />
         <div>
             <label for="">Limites para Y</label>
-            <input type="number" placeholder="" id="limiteYMax" value="50">
+            <input type="number" placeholder="" id="limiteYMax" min="33" value="50">
         </div>
         <br />
         <br />
         <div>
-            <button onclick="calcular()">Calcular</button>
+            <button type="submit">Calcular</button>
         <div>
-    </div>
+    </form>
     <style>
         * {
             margin: 0px
