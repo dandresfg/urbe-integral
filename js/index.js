@@ -51,15 +51,44 @@ function calcular(){
         }
     }
 
-    let areaRect =  (yMax - yMin) * (xMax - xMin);
-    let prom = (favor*100)/tries;
+    const areaRect =  (yMax - yMin) * (xMax - xMin);
+    const prom = (favor*100)/tries;
+
+    const monteCarlo = areaRect * (prom / 100);
 
     console.log('______________')
     console.log('area: ', areaRect)
-    console.log('Montecarlo: ', areaRect * (prom / 100))
+    console.log('Montecarlo: ', monteCarlo)
     console.log('Integral: ', integral)
 
-
     let sim = areaRect * (prom / 100);
-    console.log('Error %', Math.abs(((integral - sim) / integral) * 100));
+    const error = Math.abs(((integral - sim) / integral) * 100)
+    console.log('Error %', error);
+
+    showResults({area: areaRect, monteCarlo, integral, error});
+}
+
+const showResults = ({area, monteCarlo, integral, error}) => {
+    const $results = document.getElementById('results');
+    let str =`
+        <h2>Resultados</h2>
+        <div class="result-control">
+            <strong>Area de la Zona de Evaluacion</strong>
+            <input type="text" disabled value="${area}" />
+        </div>
+        <div class="result-control">
+            <strong>Evaluacion de MonteCarlo</strong>
+            <input type="text" disabled value="${monteCarlo}" />
+        </div>
+        <div class="result-control">
+            <strong>Area de la Integral</strong>
+            <input type="text" disabled value="${integral}" />
+        </div>
+        <div class="result-control">
+            <strong>Margen de Error</strong>
+            <input type="text" disabled value="${error}%" />
+        </div>
+    `;
+
+    $results.innerHTML = str;
 }
